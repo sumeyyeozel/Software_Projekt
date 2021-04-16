@@ -3,29 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package software_projekt;
+package software_projekt.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 
 /**
  * FXML Controller class
  *
  * @author sumey
  */
-public class HauptmenuController implements Initializable {
-
-     //Hauptmenu 
+public class Initialisierung_endeController implements Initializable {
+       //initialisierung ende
     @FXML
-    private Button h_weiter;
+    private Button iende_checkin;
     @FXML
-    private Button h_ende;
-    @FXML
-    private ChoiceBox h_choice;
+    private Button iende_abbrechen;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
