@@ -18,8 +18,8 @@
       </AnchorPane>
       <AnchorPane layoutX="102.0" layoutY="104.0" prefHeight="265.0" prefWidth="495.0" style="-fx-background-color: #edffec;">
          <children>
-            <Button layoutX="86.0" layoutY="72.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="308.0" style="-fx-background-color: fbe6c2;" text="CHECK-IN" />
-            <Button layoutX="394.0" layoutY="212.0" mnemonicParsing="false" style="-fx-background-color: #7c9473;" text="Abbrechen" />
+            <Button fx:id="iende_checkin" layoutX="86.0" layoutY="72.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="308.0" style="-fx-background-color: fbe6c2;" text="CHECK-IN" />
+            <Button fx:id="iende_abbrechen" layoutX="394.0" layoutY="212.0" mnemonicParsing="false" style="-fx-background-color: #7c9473;" text="Abbrechen" />
          </children>
       </AnchorPane>
    </children>

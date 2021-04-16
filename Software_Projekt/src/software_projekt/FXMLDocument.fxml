@@ -14,13 +14,13 @@
    <children>
       <AnchorPane layoutX="324.0" layoutY="29.0" prefHeight="321.0" prefWidth="355.0" style="-fx-background-color: #EDFFEC;">
          <children>
-            <Button layoutX="40.0" layoutY="217.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: #7C9473;" text="Anmelden" AnchorPane.topAnchor="217.0">
+            <Button fx:id="anmelden" layoutX="40.0" layoutY="217.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: #7C9473;" text="Anmelden" AnchorPane.topAnchor="217.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </Button>
-            <TextField layoutX="40.0" layoutY="92.0" prefHeight="26.0" prefWidth="267.0" promptText="Benutzererkennung" style="-fx-background-color: #eeebdd;" />
-            <PasswordField layoutX="40.0" layoutY="148.0" prefHeight="26.0" prefWidth="267.0" promptText="Password" style="-fx-background-color: #eeebdd;" />
+            <TextField fx:id="benutzererk" layoutX="40.0" layoutY="92.0" prefHeight="26.0" prefWidth="267.0" promptText="Benutzererkennung" style="-fx-background-color: #eeebdd;" />
+            <PasswordField fx:id="pass" layoutX="40.0" layoutY="148.0" prefHeight="26.0" prefWidth="267.0" promptText="Password" style="-fx-background-color: #eeebdd;" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="308.0" style="-fx-background-color: #dbf6e9;">
