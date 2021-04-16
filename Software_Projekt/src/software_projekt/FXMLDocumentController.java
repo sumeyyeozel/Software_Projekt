@@ -3,25 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package software_projekt;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
  *
  * @author sumey
  */
-public class Initialisierung_endeController implements Initializable {
-       //initialisierung ende
+public class FXMLDocumentController implements Initializable {
+   
+     //Anmeldung
     @FXML
-    private Button iende_checkin;
+    private Button anmelden;
+    @FXML 
+    private TextField benutzererk;
+    @FXML 
+    private PasswordField pass;
+    
+
+
+   
+   
+    
+    
+  
+    
+    
+    
     @FXML
-    private Button iende_abbrechen;
+    private void handleButtonAction(ActionEvent event) {
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -3,31 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package software_projekt;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author sumey
  */
-public class SetupController implements Initializable {
+public class InitialisierungController implements Initializable {
 
-        //SETUP
+        //initialisierung
     @FXML
-    private Button set_weiter;
+    private Button init_beginn;
     @FXML
-    private Button set_abbrechen;
-    @FXML
-    private TextField set_tf_artikel;
-    @FXML
-    private TextField set_tf_auftrag;
+    private Button init_abbrechen;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

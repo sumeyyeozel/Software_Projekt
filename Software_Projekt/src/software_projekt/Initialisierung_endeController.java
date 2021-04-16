@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package software_projekt;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,13 +16,12 @@ import javafx.scene.control.Button;
  *
  * @author sumey
  */
-public class InitialisierungController implements Initializable {
-
-        //initialisierung
+public class Initialisierung_endeController implements Initializable {
+       //initialisierung ende
     @FXML
-    private Button init_beginn;
+    private Button iende_checkin;
     @FXML
-    private Button init_abbrechen;
+    private Button iende_abbrechen;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
