@@ -1,4 +1,4 @@
-package CabinetMock;
+package software_projekt.CabinetMock;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
