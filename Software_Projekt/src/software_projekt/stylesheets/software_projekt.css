@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 Nis 2021, 18:27:30
+    Author     : beyzaesra
+*/
+
+.app {
+    -fx-background-color: #fff;
+}
+
+.br {
+    -fx-background-radius:0 56px 0 0;
+}
+
+.br-btn-input {
+    -fx-background-radius: 18px;
+}
+
+.input {
+    -fx-border-width: 2px;
+    -fx-border-color: #768d6e;
+    -fx-border-style: solid;
+    -fx-border-radius: 18px;
+}
+
+.btn-success{
+    -fx-background-color:#768d6e;
+    -fx-background-radius: 18px;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+}
+
+.transparent {
+    -fx-background-color:transparent;
+}
+.tableview {
+    -fx-background-color: #eeeadd;
+    -fx-background-radius: 2px;
+}
+
+.progressbar {
+    -fx-border-color: #eeeadd;
+    -fx-border-radius:5px;
+        
+}
