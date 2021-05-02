@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+
 /**
  * FXML Controller class
  *
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 public class InitialisierungController implements Initializable {
 
         //initialisierung
+
     @FXML
     private Button init_beginn;
     @FXML
