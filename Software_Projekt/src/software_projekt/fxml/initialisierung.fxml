@@ -18,12 +18,12 @@
             </Label>
             <ImageView fitHeight="70.0" fitWidth="65.0" layoutX="8.0" layoutY="9.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/power.png" />
+                  <Image url="@../images/power.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="65.0" layoutX="627.0" layoutY="10.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/power.png" />
+                  <Image url="@../images/power.png" />
                </image>
             </ImageView>
          </children>

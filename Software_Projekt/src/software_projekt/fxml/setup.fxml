@@ -22,7 +22,7 @@
          <children>
             <ImageView fitHeight="145.0" fitWidth="159.0" layoutX="63.0" layoutY="166.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/settings.png" />
+                  <Image url="@../images/settings.png" />
                </image>
             </ImageView>
             <Label layoutX="63.0" layoutY="61.0" text="SETUP" textFill="#5ea461">
