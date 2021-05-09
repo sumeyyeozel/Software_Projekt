@@ -15,14 +15,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="app" stylesheets="@stylesheets/software_projekt.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="software_projekt.controller.Burn_inTest2Controller">
    <children>
-      <Pane layoutY="221.0" prefHeight="239.0" prefWidth="90.0" style="-fx-background-color: #caf7e3;" styleClass="br">
+      <Pane layoutY="174.0" prefHeight="239.0" prefWidth="90.0" style="-fx-background-color: #caf7e3;" styleClass="br">
          <children>
             <StackPane layoutX="34.0" layoutY="14.0">
                <children>
                   <Circle fill="#caf7e3" radius="42.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
-                  <ImageView fx:id="button_home" fitHeight="39.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="button_home" fitHeight="39.0" fitWidth="35.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/home-page.png" />
+                        <Image url="@../images/home-page.png" />
                      </image>
                   </ImageView>
                </children>
@@ -30,27 +30,23 @@
             <StackPane layoutX="34.0" layoutY="120.0">
                <children>
                   <Circle fill="#caf7e3" radius="42.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
-                  <ImageView fx:id="button_abbrechen" fitHeight="104.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="button_abbrechen" fitHeight="45.0" fitWidth="39.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/power.png" />
+                        <Image url="@../images/power.png" />
                      </image>
                   </ImageView>
                </children>
             </StackPane>
          </children>
       </Pane>
-      <Pane layoutX="89.0" layoutY="79.0" prefHeight="378.0" prefWidth="760.0">
+      <Pane layoutX="124.0" layoutY="77.0" prefHeight="330.0" prefWidth="533.0">
          <children>
             <HBox layoutX="509.0" layoutY="302.0" prefHeight="58.0" prefWidth="241.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="52.0" prefWidth="232.0">
-                     <children>
-                        <Button fx:id="button_weiter_testen" mnemonicParsing="false" prefHeight="43.0" prefWidth="234.0" style="-fx-background-color: #fdd835;" styleClass="btn-success" text="WEITER TESTEN" textFill="WHITE" />
-                     </children>
-                  </HBox>
+                  <HBox alignment="TOP_RIGHT" prefHeight="52.0" prefWidth="232.0" />
                </children>
             </HBox>
-            <ProgressBar layoutX="57.0" layoutY="166.0" prefHeight="43.0" prefWidth="680.0" progress="0.0" style="-fx-border-color: #eeeadd;" styleClass="progressbar" />
+            <ProgressBar layoutX="42.0" layoutY="168.0" prefHeight="43.0" prefWidth="474.0" progress="0.0" style="-fx-border-color: #eeeadd;" styleClass="progressbar" />
             <Text fill="#87cd8a" layoutX="88.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="verstrichene Zeit" />
             <Text fill="#87cd8a" layoutX="88.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="voraussichtliche dauer" />
             <Text fill="#87cd8a" layoutX="288.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IST-Temperatur" />
@@ -72,13 +68,14 @@
                   </Pane>
                </children>
             </VBox>
+            <Button fx:id="button_weiter_testen" layoutX="273.0" layoutY="246.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="234.0" style="-fx-background-color: #fdd835;" styleClass="btn-success" text="WEITER TESTEN" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane prefHeight="66.0" prefWidth="849.0" style="-fx-background-color: #caf7e3;">
+      <Pane prefHeight="66.0" prefWidth="700.0" style="-fx-background-color: #caf7e3;">
          <children>
-            <HBox layoutX="-5.0" layoutY="14.0" prefHeight="52.0" prefWidth="854.0">
+            <HBox layoutX="-5.0" layoutY="14.0" prefHeight="52.0" prefWidth="700.0">
                <children>
-                  <Text fill="#87cd8a" strokeType="OUTSIDE" strokeWidth="0.0" text="   BURN-IN TEST" wrappingWidth="784.8823843002319">
+                  <Text fill="#87cd8a" strokeType="OUTSIDE" strokeWidth="0.0" text="   BURN-IN TEST" wrappingWidth="265.54901027679443">
                      <font>
                         <Font size="36.0" />
                      </font>

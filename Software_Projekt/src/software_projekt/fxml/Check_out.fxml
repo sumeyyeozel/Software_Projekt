@@ -20,9 +20,9 @@
             <StackPane layoutX="34.0" layoutY="14.0">
                <children>
                   <Circle fill="#caf7e3" radius="42.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
-                  <ImageView fx:id="button_home" fitHeight="39.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="button_home" fitHeight="39.0" fitWidth="35.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/home-page.png" />
+                        <Image url="@../images/home-page.png" />
                      </image>
                   </ImageView>
                </children>
@@ -30,40 +30,33 @@
             <StackPane layoutX="34.0" layoutY="120.0">
                <children>
                   <Circle fill="#caf7e3" radius="42.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
-                  <ImageView fx:id="button_abbrechen" fitHeight="104.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="button_abbrechen" fitHeight="46.0" fitWidth="39.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/power.png" />
+                        <Image url="@../images/power.png" />
                      </image>
                   </ImageView>
                </children>
             </StackPane>
          </children>
       </Pane>
-      <Pane layoutX="89.0" layoutY="79.0" prefHeight="378.0" prefWidth="760.0">
+      <Pane layoutX="141.0" layoutY="86.0" prefHeight="326.0" prefWidth="551.0">
          <children>
-            <TableView fx:id="t_check_out" layoutX="374.0" layoutY="10.0" prefHeight="278.0" prefWidth="376.0" styleClass="tableview">
+            <TableView fx:id="t_check_out" layoutX="138.0" layoutY="32.0" prefHeight="170.0" prefWidth="380.0" styleClass="tableview">
               <columns>
                 <TableColumn prefWidth="125.0" text="SLOT" />
                 <TableColumn prefWidth="125.0" text="BAUTEIL-ID" />
                   <TableColumn minWidth="0.0" prefWidth="125.0" text="AUFTRAG" />
               </columns>
             </TableView>
-            <HBox layoutX="509.0" layoutY="302.0" prefHeight="58.0" prefWidth="241.0">
-               <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="52.0" prefWidth="232.0">
-                     <children>
-                        <Button fx:id="button_ende" mnemonicParsing="false" prefHeight="43.0" prefWidth="234.0" style="-fx-background-color: #e53935;" styleClass="btn-success" text="ENDE" textFill="WHITE" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
+            <HBox layoutX="509.0" layoutY="302.0" prefHeight="58.0" prefWidth="241.0" />
+            <Button fx:id="button_ende" layoutX="402.0" layoutY="259.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="107.0" style="-fx-background-color: #e53935;" styleClass="btn-success" text="ENDE" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane prefHeight="66.0" prefWidth="849.0" style="-fx-background-color: #caf7e3;">
+      <Pane prefHeight="66.0" prefWidth="700.0" style="-fx-background-color: #caf7e3;">
          <children>
-            <HBox layoutX="-5.0" layoutY="14.0" prefHeight="52.0" prefWidth="854.0">
+            <HBox layoutX="-5.0" layoutY="14.0" prefHeight="52.0" prefWidth="223.0">
                <children>
-                  <Text fill="#87cd8a" strokeType="OUTSIDE" strokeWidth="0.0" text="   CHECK OUT" wrappingWidth="784.8823843002319">
+                  <Text fill="#87cd8a" strokeType="OUTSIDE" strokeWidth="0.0" text="   CHECK OUT" wrappingWidth="250.8823537826538">
                      <font>
                         <Font size="36.0" />
                      </font>
