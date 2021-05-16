@@ -17,7 +17,7 @@ public class DB_Connection {
     Connection myconn = null;
   public static Connection conDB() throws ClassNotFoundException {
       try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://sql11.freesqldatabase.com:3306/sql11409731?user=sql11409731&&password=Dz2us1dZVi");
+            Connection con = DriverManager.getConnection("jdbc:mysql://sql11.freesqldatabase.com:3306/sql11412729?user=sql11412729&&password=r1pEpnJnYx");
             return con;
         } catch (SQLException ex) {
             System.err.println("ConnectionUtil : "+ ex.getMessage());
