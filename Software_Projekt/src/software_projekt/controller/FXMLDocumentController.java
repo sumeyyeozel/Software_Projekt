@@ -31,6 +31,10 @@ import software_projekt.Database.DB_Connection;
  * @author sumey
  */
 public class FXMLDocumentController implements Initializable {
+
+    public static String setEmail() {
+        return email; 
+    }
    
      //Anmeldung
     @FXML
@@ -48,7 +52,7 @@ public class FXMLDocumentController implements Initializable {
     Connection con=null;
     ResultSet resultSet=null;
     PreparedStatement preparedStatement=null;
- 
+    static String email;
     
     
   
@@ -125,7 +129,8 @@ public class FXMLDocumentController implements Initializable {
         
         return status;
     }
-    
+     
+   
     private void setLblError(Color color, String text) {
         setLblError.setTextFill(color);
         setLblError.setText(text);

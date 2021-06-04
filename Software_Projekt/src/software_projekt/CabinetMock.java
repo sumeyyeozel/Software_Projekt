@@ -1,4 +1,9 @@
-package software_projekt.CabinetMock;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package software_projekt;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,10 +11,12 @@ package software_projekt.CabinetMock;
  * and open the template in the editor.
  */
 
+
 /**
  *
- * @author sumey
+ * @author nurda
  */
+import software_projekt.MessageType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -81,8 +88,7 @@ public class CabinetMock extends Thread {
 
 		try {
 			Thread.sleep(60000);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (InterruptedException e) {
 		}
 
 		server.stopServer();
@@ -92,16 +98,16 @@ public class CabinetMock extends Thread {
 }
 
 class RequestHandler extends Thread {
-	private Socket socket;
+	private final Socket socket;
 	private String station;
 	private String user;
 	private int failureRate;
 	private int failureRatePreTest;
 	private String role;
-	private String[] slots;
+	private final String[] slots;
 	private MessageType awaited;
 	private boolean initPhase;
-	private Hashtable<String, Integer> examinees;
+	private final Hashtable<String, Integer> examinees;
 	private int preTestCnt;
 	private Random random;
 	private int maxMinsWait;
@@ -154,7 +160,7 @@ class RequestHandler extends Thread {
 			CabinetMock.log("Connection closed");
 			CabinetMock.log("Server exiting with status <<0>>");
 			System.exit(0);
-		} catch (Exception e) {
+		} catch (IOException | InterruptedException e) {
 			CabinetMock.log("Communication to CabinetControl lost. Waiting for new connection....");
 		}
 	}
