@@ -10,11 +10,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import software_projekt.Software_Projekt;
-import software_projekt.controller.FXMLDocumentController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import software_projekt.ModelTable;
+
 
 
 /**
@@ -37,7 +38,30 @@ public class DB_Connection {
         }   
         
     }
+  public static ObservableList<ModelTable> getDataUsers() {
+      Connection conn = null;
+        try {
+            conn = conDB();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      ObservableList<ModelTable> list = FXCollections.observableArrayList();
+      try{
+       PreparedStatement ps=conn.prepareStatement("select * from ModelTable");
+       ResultSet rs=ps.executeQuery();
+       while(rs.next()){
+         list.add(new ModelTable(Integer.parseInt(rs.getString("id")), rs.getString("username"), rs.getString("e_mail"), rs.getString("bauteil_id")));
+       
+       
+       }
+      
+      }
+      catch(Exception e){
+      
+      }
+        return list;
   
+  }
   //cuma gunu derleme amaciyla ayzildi
 
 

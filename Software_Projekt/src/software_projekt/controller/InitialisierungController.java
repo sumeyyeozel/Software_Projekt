@@ -66,8 +66,7 @@ public class InitialisierungController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO 
-        
-           
+       
 
     } 
     private void setLblError(Color color, String text) {
@@ -114,4 +113,5 @@ public class InitialisierungController implements Initializable {
         
         
     }
+    
 }
