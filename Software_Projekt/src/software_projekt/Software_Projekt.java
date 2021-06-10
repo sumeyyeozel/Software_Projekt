@@ -48,6 +48,8 @@ public class Software_Projekt extends Application {
         ResultSet resultSet;
         PreparedStatement preparedStatement;
         public static BufferedReader fromServer;
+        
+
          private static float actCabinetTemp = Float.MIN_VALUE;
            static boolean targetTempSet = false;
         private static  boolean targetTempReached = false;
@@ -138,7 +140,7 @@ public class Software_Projekt extends Application {
         
        public static void test (Socket socket, PrintStream toServer,Vector<String> messages) throws IOException, InterruptedException {
                  fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
-                 
+                 toServer= new PrintStream(socket.getOutputStream(), true);
           for(String message : messages) {
                 if(message.startsWith("PRETST")){
                      System.out.println("=====>"+message);

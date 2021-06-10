@@ -56,16 +56,17 @@ public class FunktionsCheck1Controller  implements Initializable {
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
+       // messages.add("STRT|Kabinett 1|Nurdanseker|ADMIN|10|3") ;
         try {
             try {
-                System.out.println("initilize basarili");
+                System.out.println("initialize basarili");
                 
                 conn = DB_Connection.conDB();
                 statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT bauteil_id FROM ModelTable");
                 while (resultSet.next()) {
                     bauteil_id = resultSet.getString(1);
-                    messages.add("INIT|"+slot+""+bauteil_id+"");
+                    messages.add("INIT|"+slot+"|"+bauteil_id+"");
                     System.out.println(bauteil_id);
                     slot++;
                     
@@ -81,7 +82,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             
             messages.add("ENDINIT");
             messages.add("STRTPRE|25"); // |failurrate [%1]
-            for(int i= 1;i<=20; i++){
+            for(int i= 1;i<slot; i++){
                 messages.add("PRETST|"+i);
                 messages.add("PRETST|"+i);
                 messages.add("PRETST|"+i);
@@ -89,10 +90,10 @@ public class FunktionsCheck1Controller  implements Initializable {
             messages.add("ENDPRE");
             messages.add("STRTBURNIN");
             messages.add("OPERTEMP");
-            messages.add("SETTARGET|70.5|180|3|5"); 
+            messages.add("SETTARGET|"+ firstTargetTemp+"|"+ firstTargetTime+"|3|5"); 
             messages.add("STRTPING|25"); // |Failurerate[%]
             for(int j = 0; j<3; j++){
-                for(int i =1;i<= 20;i++){
+                for(int i =1;i< slot;i++){
                     messages.add("PING|"+i);
                     messages.add("PING|"+i);
                     messages.add("PING|"+i);
@@ -102,7 +103,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             messages.add("SETTARGET|" + secondTargetTemp+"|"+ secondTargetTime+"|3|5");  
             messages.add("STRTPING|25"); // |Failurerate[%]
             for(int j = 0; j<5; j++){
-                for(int i =1;i<= 20;i++){
+                for(int i =1;i< slot;i++){
                     messages.add("PING|"+i);
                     messages.add("PING|"+i);
                     messages.add("PING|"+i);
@@ -116,11 +117,9 @@ public class FunktionsCheck1Controller  implements Initializable {
             messages.add("STOP");
             
             Software_Projekt.test(Software_Projekt.socket,Software_Projekt.toServer,messages);
-        } catch (IOException ex) {
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(FunktionsCheck1Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(FunktionsCheck1Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
 }
