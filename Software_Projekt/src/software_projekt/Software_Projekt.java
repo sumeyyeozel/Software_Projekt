@@ -1,3 +1,5 @@
+
+// bu kisma klimaschrank ve databaase baglantisi gelecek
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +19,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Hashtable;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,17 +34,26 @@ import software_projekt.Database.DB_Connection;
  * @author sumey
  */
 public class Software_Projekt extends Application {
+
+   
     
     private double xOffset = 0;
 	private double yOffset = 0;
 	public static Hashtable<String, String> users = new Hashtable<>();
-	public static PrintStream toCabinet= null;
+	public static PrintStream toCabinet;
+        public static PrintStream toServer;
 	public static BufferedReader fromCabinet;
 	public static Socket socket;
         Connection con;
         ResultSet resultSet;
         PreparedStatement preparedStatement;
-    
+        public static BufferedReader fromServer;
+         private static float actCabinetTemp = Float.MIN_VALUE;
+           static boolean targetTempSet = false;
+        private static  boolean targetTempReached = false;
+        private static  boolean first =true;
+        static float firstTargetTemp = 70.5f;
+        static float secondTargetTemp = -25.8f;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/software_projekt/fxml/FXMLDocument.fxml"));
@@ -54,6 +68,7 @@ public class Software_Projekt extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
        
         connect2Cabinet(args);
         //connect2Database();
@@ -120,7 +135,76 @@ public class Software_Projekt extends Application {
 		}
 	}
     
-    
-    
+        
+       public static void test (Socket socket, PrintStream toServer,Vector<String> messages) throws IOException, InterruptedException {
+                 fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+                 
+          for(String message : messages) {
+                if(message.startsWith("PRETST")){
+                     System.out.println("=====>"+message);
+                     toServer.println(message);
+                      long start = System.currentTimeMillis();
+                    String answer = fromServer.readLine();
+                    long stop = System.currentTimeMillis();
+                    if(answer.contains("OK"))
+                        System.out.println("<<=="+answer + "answered in" + (stop-start)+"milliseconds");
+                    else
+                        System.out.println("<<==="+answer);
+                }else{
+                    System.out.println("=====>"+message);
+                    toServer.println(message);
+                    String answer = fromServer.readLine();
+                    System.out.println("<<==="+answer);
+                    if(answer!=null&&answer.startsWith("SETTARGET-RESP")){
+                        if(!targetTempSet){
+                            actCabinetTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
+                            targetTempSet = true;
+                        }
+                    
+                    }else if(answer!=null&&answer.startsWith("STOPPING")){
+                        System.exit(0);
+                    }
+                    if(targetTempSet &&!targetTempReached){
+                        do{
+                            message= "OPERTEMP";
+                            Thread.sleep(10000);
+                            System.out.println("=====>"+message);
+                            toServer.println(message);
+                            answer=fromServer.readLine();
+                            System.out.println("<<==="+answer);
+                            float cabinTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
+                            float targetTemp = (first ? firstTargetTemp:secondTargetTemp);
+                            if(cabinTemp >=0){
+                                if(cabinTemp >=(targetTemp-targetTemp*0.03)&&cabinTemp <= (targetTemp+targetTemp*0.03)){
+                                    targetTempReached = true;
+                                }
+                            }
+                            else{
+                                if(cabinTemp <=(targetTemp-targetTemp*0.03)&&cabinTemp >= (targetTemp+targetTemp*0.03)){
+                                targetTempReached = true;
+                                secondTargetTemp = 20;
+                                }
+                            }
+                        
+                        
+                        }while(!targetTempReached);
+                        if(targetTempReached){
+                            System.out.println("T A R G E T      R E A C H E D");
+                            first=false;
+                            targetTempSet = false;
+                            targetTempReached = false;
+                        
+                        }
+                    
+                    }
+                }
+            }
+        
+        
+        
+        }
+        
+        
 }
-// bu kisma klimaschrank ve databaase baglantisi gelecek
+        
+    
