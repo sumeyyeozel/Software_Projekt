@@ -71,8 +71,9 @@ public class Software_Projekt extends Application {
      */
     public static void main(String[] args) {
         
-       
+
         connect2Cabinet(args);
+       
         //connect2Database();
           launch(args);
 		
@@ -93,6 +94,7 @@ public class Software_Projekt extends Application {
 	
 			try {
 			int port = Integer.parseInt(args[0]);
+              
 			socket = new Socket("localhost", port);
 			Software_Projekt.toCabinet = new PrintStream(socket.getOutputStream(), true);
 			Software_Projekt.fromCabinet = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -142,7 +144,13 @@ public class Software_Projekt extends Application {
                  fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
                  toServer= new PrintStream(socket.getOutputStream(), true);
           for(String message : messages) {
-                if(message.startsWith("PRETST")){
+              
+                    // System.out.println("=====>"+message);
+                     //toServer.println(message);
+                     
+                    //String answer = fromServer.readLine();
+                    //System.out.println("<<==="+answer);
+                    if(message.startsWith("PRETST")){
                      System.out.println("=====>"+message);
                      toServer.println(message);
                       long start = System.currentTimeMillis();
@@ -161,15 +169,13 @@ public class Software_Projekt extends Application {
                         if(!targetTempSet){
                             actCabinetTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
                             targetTempSet = true;
-                        }
-                    
-                    }else if(answer!=null&&answer.startsWith("STOPPING")){
+                        }else if(answer!=null&&answer.startsWith("STOPPING")){
                         System.exit(0);
-                    }
-                    if(targetTempSet &&!targetTempReached){
+                    } if(targetTempSet &&!targetTempReached){
                         do{
                             message= "OPERTEMP";
-                            Thread.sleep(10000);
+                            Thread.sleep(100);//10000 olacak deneme amacli
+                            
                             System.out.println("=====>"+message);
                             toServer.println(message);
                             answer=fromServer.readLine();
@@ -177,20 +183,23 @@ public class Software_Projekt extends Application {
                             float cabinTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
                             float targetTemp = (first ? firstTargetTemp:secondTargetTemp);
                             if(cabinTemp >=0){
-                                if(cabinTemp >=(targetTemp-targetTemp*0.03)&&cabinTemp <= (targetTemp+targetTemp*0.03)){
-                                    targetTempReached = true;
-                                }
-                            }
-                            else{
+                                 if(cabinTemp >=(targetTemp-targetTemp*0.03)&&cabinTemp <= (targetTemp+targetTemp*0.03)){
+                                 
+                                    targetTempReached = true;}
+                                
+                          
+                            }else{     
                                 if(cabinTemp <=(targetTemp-targetTemp*0.03)&&cabinTemp >= (targetTemp+targetTemp*0.03)){
-                                targetTempReached = true;
-                                secondTargetTemp = 20;
+                                    targetTempReached = true;
+                                   
                                 }
                             }
-                        
-                        
+                       
                         }while(!targetTempReached);
-                        if(targetTempReached){
+                        
+                        
+                        
+                    }if(targetTempReached){
                             System.out.println("T A R G E T      R E A C H E D");
                             first=false;
                             targetTempSet = false;
@@ -202,11 +211,19 @@ public class Software_Projekt extends Application {
                 }
             }
         
+
+                          
+                        }
+                    
+                    
+                
+            
+        
         
         
         }
         
         
-}
+
         
     

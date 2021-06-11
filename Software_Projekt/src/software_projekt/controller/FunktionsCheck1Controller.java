@@ -50,9 +50,9 @@ public class FunktionsCheck1Controller  implements Initializable {
     Vector<String>messages = new Vector<String>();
      boolean first =true;
             float firstTargetTemp=70.5f;
-            int firstTargetTime = 180;
+            int firstTargetTime = 1;
             float secondTargetTemp= -25.8f;
-            int secondTargetTime = 210;
+            int secondTargetTime = 5;
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,7 +90,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             messages.add("ENDPRE");
             messages.add("STRTBURNIN");
             messages.add("OPERTEMP");
-            messages.add("SETTARGET|"+ firstTargetTemp+"|"+ firstTargetTime+"|3|5"); 
+            messages.add("SETTARGET|"+ firstTargetTemp+"|"+ firstTargetTime+"|3|10"); 
             messages.add("STRTPING|25"); // |Failurerate[%]
             for(int j = 0; j<3; j++){
                 for(int i =1;i< slot;i++){
@@ -100,7 +100,7 @@ public class FunktionsCheck1Controller  implements Initializable {
                 }
             }
             messages.add("STOPPING");
-            messages.add("SETTARGET|" + secondTargetTemp+"|"+ secondTargetTime+"|3|5");  
+            messages.add("SETTARGET|" + secondTargetTemp+"|"+ secondTargetTime+"|3|10");  
             messages.add("STRTPING|25"); // |Failurerate[%]
             for(int j = 0; j<5; j++){
                 for(int i =1;i< slot;i++){
@@ -115,7 +115,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             
             messages.add("SETTARGET|20|30|3|5");
             messages.add("STOP");
-            
+         
             Software_Projekt.test(Software_Projekt.socket,Software_Projekt.toServer,messages);
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(FunktionsCheck1Controller.class.getName()).log(Level.SEVERE, null, ex);

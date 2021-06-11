@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="849.0" styleClass="app" stylesheets="@stylesheets/software_projekt.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="software_projekt.controller.Check_in1Controller">
    <children>
-      <Pane layoutY="221.0" prefHeight="239.0" prefWidth="90.0" style="-fx-background-color: #caf7e3;" styleClass="br">
+      <Pane layoutY="221.0" prefHeight="245.0" prefWidth="90.0" style="-fx-background-color: #caf7e3;" styleClass="br" stylesheets="@../stylesheets/software_projekt.css">
          <children>
             <StackPane layoutX="34.0" layoutY="14.0">
                <children>
@@ -40,35 +40,48 @@
             </StackPane>
          </children>
       </Pane>
-      <Pane layoutX="143.0" layoutY="88.0" prefHeight="378.0" prefWidth="707.0">
+      <Pane layoutX="138.0" layoutY="66.0" prefHeight="400.0" prefWidth="712.0">
          <children>
-            <TableView fx:id="t_check_in1" layoutX="301.0" layoutY="14.0" prefHeight="278.0" prefWidth="376.0" styleClass="tableview">
+            <TableView fx:id="t_check_in1" layoutX="301.0" layoutY="22.0" prefHeight="277.0" prefWidth="396.0" styleClass="tableview">
               <columns>
-                <TableColumn prefWidth="125.0" text="SLOT" />
-                <TableColumn prefWidth="125.0" text="BAUTEIL-ID" />
-                  <TableColumn minWidth="0.0" prefWidth="125.0" text="AUFTRAG" />
+                <TableColumn fx:id="col_id" prefWidth="91.88052368164062" text="Slot ID" />
+                  <TableColumn fx:id="col_username" prefWidth="91.88052368164062" text="Username" />
+                  <TableColumn fx:id="col_e_mail" prefWidth="91.88052368164062" text="E-mail" />
+                  <TableColumn fx:id="col_bauteil_id" prefWidth="93.0" text="Bauteil ID" />
               </columns>
             </TableView>
-            <TextField fx:id="bau_id" layoutX="30.0" layoutY="48.0" prefHeight="42.0" prefWidth="242.0" promptText="Bauteil-ID">
+            <TextField fx:id="slot_id" layoutX="30.0" layoutY="48.0" prefHeight="42.0" prefWidth="242.0" promptText="Slot ID">
                <styleClass>
                   <String fx:value="transparent" />
                   <String fx:value="input" />
                </styleClass>
             </TextField>
-            <TextField fx:id="slot" layoutX="30.0" layoutY="99.0" prefHeight="40.0" prefWidth="242.0" promptText="Slot">
+            <Button fx:id="button_prufling_entfernen" layoutX="539.0" layoutY="320.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="PRUFLING ENTFERNEN" textFill="WHITE" />
+            <Button fx:id="button_fertig" layoutX="84.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#test_begin" prefHeight="42.0" prefWidth="183.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="FERTIG" textFill="WHITE" />
+            <TextField fx:id="username" layoutX="30.0" layoutY="99.0" prefHeight="42.0" prefWidth="242.0" promptText="Username">
                <styleClass>
                   <String fx:value="transparent" />
                   <String fx:value="input" />
                </styleClass>
             </TextField>
-            <Button fx:id="button_prüfling_entfernen" layoutX="522.0" layoutY="308.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="PRÜFLING ENTFERNEN" textFill="WHITE" />
-            <Button fx:id="button_fertig" layoutX="125.0" layoutY="153.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="FERTIG" textFill="WHITE" />
-            <Button fx:id="button_ahinzufügen" layoutX="125.0" layoutY="213.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="147.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="AUFTRAG HINZUFUGEN" textFill="WHITE" />
+            <TextField fx:id="e_mail" layoutX="30.0" layoutY="153.0" prefHeight="42.0" prefWidth="242.0" promptText="E-mail">
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="input" />
+               </styleClass>
+            </TextField>
+            <TextField fx:id="bauteil_id" layoutX="30.0" layoutY="205.0" prefHeight="42.0" prefWidth="242.0" promptText="Bauteil-ID">
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="input" />
+               </styleClass>
+            </TextField>
+            <Button fx:id="button_hınzufugen" layoutX="83.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#enter_hinzufugen" prefHeight="42.0" prefWidth="183.0" style="-fx-background-color: #7c9473;" styleClass="btn-success" text="AUFTRAG HINZUFUGEN" textFill="WHITE" />
          </children>
       </Pane>
       <Pane prefHeight="66.0" prefWidth="849.0" style="-fx-background-color: #caf7e3;">
          <children>
-            <Text fill="#87cd8a" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   CHECK IN" wrappingWidth="256.8824758529663">
+            <Text fill="#87cd8a" layoutX="-5.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   CHECK IN" wrappingWidth="256.8824758529663">
                <font>
                   <Font size="36.0" />
                </font>
