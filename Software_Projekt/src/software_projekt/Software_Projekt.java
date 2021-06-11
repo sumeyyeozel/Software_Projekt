@@ -56,6 +56,7 @@ public class Software_Projekt extends Application {
         private static  boolean first =true;
         static float firstTargetTemp = 70.5f;
         static float secondTargetTemp = -25.8f;
+        public static String answer;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/software_projekt/fxml/FXMLDocument.fxml"));
@@ -163,7 +164,7 @@ public class Software_Projekt extends Application {
                 }else{
                     System.out.println("=====>"+message);
                     toServer.println(message);
-                    String answer = fromServer.readLine();
+                     answer = fromServer.readLine();
                     System.out.println("<<==="+answer);
                     if(answer!=null&&answer.startsWith("SETTARGET-RESP")){
                         if(!targetTempSet){
@@ -210,9 +211,9 @@ public class Software_Projekt extends Application {
                     }
                 }
             }
-        
 
-                          
+          
+             
                         }
                     
                     

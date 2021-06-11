@@ -23,8 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import software_projekt.Database.DB_Connection;
 import software_projekt.Software_Projekt;
 
@@ -39,8 +41,6 @@ public class FunktionsCheck1Controller  implements Initializable {
     private ImageView button_home;
     @FXML
     private ImageView button_abbrechen;
-    @FXML
-    private TableView<?> t_funktions_check1;
     Connection conn = null;
     ResultSet rs=null;
     PreparedStatement pst=null;
@@ -53,6 +53,8 @@ public class FunktionsCheck1Controller  implements Initializable {
             int firstTargetTime = 1;
             float secondTargetTemp= -25.8f;
             int secondTargetTime = 5;
+    @FXML
+    private Label funktionscheck_label;
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -113,13 +115,30 @@ public class FunktionsCheck1Controller  implements Initializable {
             
             
             
-            messages.add("SETTARGET|20|30|3|5");
+            //messages.add("SETTARGET|20|30|3|5");
             messages.add("STOP");
          
             Software_Projekt.test(Software_Projekt.socket,Software_Projekt.toServer,messages);
+            if (Software_Projekt.answer.startsWith("<<===STOPPING - Cabinet will shutdown in a few moments. Goodbye!")) {
+            funktionscheck_label.setTextFill(Color.TOMATO);
+            funktionscheck_label.setText("test failed");
+        } else {
+            funktionscheck_label.setTextFill(Color.GREEN);
+            funktionscheck_label.setText("TEST WAS SUCCESSFULLY");
+        }
+        
+        
+        
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(FunktionsCheck1Controller.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
+    
+    private void funktionscheck_label(Color color, String text) {
+        funktionscheck_label.setTextFill(color);
+        funktionscheck_label.setText(text);
+        System.out.println(text);
+    }
+    
 
 }
