@@ -56,11 +56,11 @@ public class InitialisierungController implements Initializable {
                 if (answer!=null&&answer.startsWith("Cabinet")) {
                     
                    begincheck.setTextFill(Color.GREEN);
-                    begincheck.setText("Cabinet connection : Successful");
+                    begincheck.setText("Schrankverbindung : Erfolgreich");
                      } 
                 else {
                 begincheck.setTextFill(Color.TOMATO);
-                begincheck.setText("Cabinet could not be connected: Fail ");}
+                begincheck.setText("Schrank konnte nicht verbunden werden : Fehler");}
                 
     }
 

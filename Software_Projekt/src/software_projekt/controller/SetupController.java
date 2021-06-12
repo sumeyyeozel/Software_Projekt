@@ -37,8 +37,6 @@ public class SetupController implements Initializable {
     @FXML
     private Button set_weiter;
     @FXML
-    private Button set_abbrechen;
-    @FXML
     private TextField set_tf_artikel;
     @FXML
     private TextField set_tf_auftrag;
@@ -51,10 +49,10 @@ public class SetupController implements Initializable {
                 System.out.println("succes");
         if (con == null) {
             setLblError.setTextFill(Color.TOMATO);
-            setLblError.setText("Server Error : Check");
+            setLblError.setText("Serverfehler : Pruefen");
         } else {
             setLblError.setTextFill(Color.GREEN);
-            setLblError.setText("Server is up : Good to go");
+            setLblError.setText("Server ist up : Gut zu gehen");
         }
     }    
     Connection con=null;

@@ -21,16 +21,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import software_projekt.Database.DB_Connection;
 
 
@@ -67,22 +64,7 @@ public class Check_in1Controller implements Initializable {
 
 
     @FXML
-    private Button button_prufling_entfernen;
-
-    @FXML
-    private Button button_hınzufugen;
-
-    @FXML
-    private TextField bauteil_id;
-   
-    @FXML
-    private TextField slot_id;
-    @FXML
     private Button button_fertig;
-    @FXML
-    private TextField username;
-    @FXML
-    private TextField e_mail;
     
     ObservableList<ModelTable> listM;
     
@@ -108,7 +90,7 @@ public class Check_in1Controller implements Initializable {
              t_check_in1.setItems(listM);
         
     }
-
+/*projeye uygun değildi. insert kısmı icindi yine.2
     @FXML
    private void enter_hinzufugen(MouseEvent event) {
     
@@ -135,7 +117,7 @@ public class Check_in1Controller implements Initializable {
         }
     
  
-   }
+   }*/
     private void loadDate() {
        
         try {
@@ -154,7 +136,7 @@ public class Check_in1Controller implements Initializable {
     }
 
 
-
+/*bizim projeye uygun değildi ui'den sildim burda böyle kalsın. 
     private void insert(){
        
             try{
@@ -184,7 +166,7 @@ public class Check_in1Controller implements Initializable {
               Logger.getLogger(Check_in1Controller.class.getName()).log(Level.SEVERE,null, ex);
             }
      
-    }
+    }*/
    @FXML
     private void test_begin(MouseEvent event) throws IOException {
          if (event.getSource() == button_fertig) {

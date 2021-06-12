@@ -52,7 +52,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             float firstTargetTemp=70.5f;
             int firstTargetTime = 1;
             float secondTargetTemp= -25.8f;
-            int secondTargetTime = 5;
+            int secondTargetTime = 8;
     @FXML
     private Label funktionscheck_label;
     @Override
@@ -120,11 +120,11 @@ public class FunktionsCheck1Controller  implements Initializable {
          
             Software_Projekt.test(Software_Projekt.socket,Software_Projekt.toServer,messages);
             if (Software_Projekt.answer.startsWith("<<===STOPPING - Cabinet will shutdown in a few moments. Goodbye!")) {
-            funktionscheck_label.setTextFill(Color.TOMATO);
-            funktionscheck_label.setText("test failed");
+            funktionscheck_label(Color.TOMATO,"test failed");
+            //funktionscheck_label.setText();
         } else {
-            funktionscheck_label.setTextFill(Color.GREEN);
-            funktionscheck_label.setText("TEST WAS SUCCESSFULLY");
+            funktionscheck_label(Color.GREEN,"TEST ERFOLGREICH ABGESCHLOSSEN!!");
+            //funktionscheck_label.setText();
         }
         
         

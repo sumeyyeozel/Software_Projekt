@@ -8,12 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Software_Projekt.jar" size="112225" download="eager" />
+    <jar href="Software_Projekt.jar" size="151114" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.24.jar" size="2428323" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Software_Projekt" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="software_projekt.Software_Projekt"  name="Software_Projekt" >
     <fx:argument>4711</fx:argument>
   </jfx:javafx-desc>

@@ -31,8 +31,8 @@
       <AnchorPane layoutX="102.0" layoutY="104.0" prefHeight="265.0" prefWidth="495.0" style="-fx-background-color: #edffec;">
          <children>
             <Button fx:id="init_beginn" layoutX="86.0" layoutY="72.0" mnemonicParsing="false" onMouseClicked="#InitBegin" prefHeight="49.0" prefWidth="308.0" style="-fx-background-color: fbe6c2;" text="BEGINN" />
-            <Button fx:id="init_weiter" layoutX="394.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#Init_Weiter" style="-fx-background-color: #7c9473;" text="Weiter" />
-            <Label fx:id="begincheck" layoutX="86.0" layoutY="151.0" text="Label" />
+            <Button fx:id="init_weiter" layoutX="380.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#Init_Weiter" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #7c9473;" text="Weiter" />
+            <Label fx:id="begincheck" layoutX="86.0" layoutY="151.0" text="Druecke den Beginn Button" textFill="#cc1410" />
          </children>
       </AnchorPane>
    </children>

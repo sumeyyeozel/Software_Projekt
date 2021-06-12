@@ -31,8 +31,6 @@ public class HauptmenuController implements Initializable {
     @FXML
     private Button h_weiter;
     @FXML
-    private Button h_ende;
-    @FXML
     private ChoiceBox<String> h_choice;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,23 +60,7 @@ public class HauptmenuController implements Initializable {
                 }
             }
          }
-         if(event.getSource() == h_ende){
-              try {
-
-                    //add you loading or delays - ;-)
-                    Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    //stage.setMaximized(true);
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/software_projekt/fxml/Check_out.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
-
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                }
-
-            }
+         
         
     }
     private void loadData(){
