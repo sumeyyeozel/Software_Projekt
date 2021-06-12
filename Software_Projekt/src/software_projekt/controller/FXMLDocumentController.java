@@ -92,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
             setLblError.setText("Serverfehler : Pruefen");
         } else {
             setLblError.setTextFill(Color.GREEN);
-            setLblError.setText("Server ist up : Gut zu gehen");
+            setLblError.setText("Server wurde gestartet : Gut zu gehen");
         }
     }    
      public FXMLDocumentController() throws ClassNotFoundException{

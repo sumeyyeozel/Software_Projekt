@@ -52,7 +52,7 @@ public class SetupController implements Initializable {
             setLblError.setText("Serverfehler : Pruefen");
         } else {
             setLblError.setTextFill(Color.GREEN);
-            setLblError.setText("Server ist up : Gut zu gehen");
+            setLblError.setText("Server wurde gestartet : Gut zu gehen");
         }
     }    
     Connection con=null;
