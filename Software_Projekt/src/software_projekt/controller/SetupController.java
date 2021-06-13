@@ -12,12 +12,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -36,16 +39,15 @@ public class SetupController implements Initializable {
         //SETUP
     @FXML
     private Button set_weiter;
-    @FXML
-    private TextField set_tf_artikel;
-    @FXML
-    private TextField set_tf_auftrag;
-    
+    ObservableList CabinetList=FXCollections.observableArrayList();
     @FXML
     private Label setLblError;
+    @FXML
+    private ChoiceBox<?> cabinet_choose;
     @Override
        public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        loadData();
                 System.out.println("succes");
         if (con == null) {
             setLblError.setTextFill(Color.TOMATO);
@@ -64,12 +66,13 @@ public class SetupController implements Initializable {
     
     @FXML
     private void enterWiter(MouseEvent event) {
-        if (event.getSource() == set_weiter) {
+        
+            String b_list= cabinet_choose.getValue().toString();
+         if (event.getSource() == set_weiter) {
             //login here
-            if (weiter().equals("Success")) {
+            if (b_list=="1. Cabinet"&&weiter().equals("Success")) {
                 try {
 
-                    //add you loading or delays - ;-)
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     //stage.setMaximized(true);
@@ -77,13 +80,12 @@ public class SetupController implements Initializable {
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/software_projekt/fxml/initialisierung.fxml")));
                     stage.setScene(scene);
                     stage.show();
-
                 } catch (IOException ex) {
                     System.err.println(ex.getMessage());
                 }
-
             }
-        }
+         }
+      
     }
     
     
@@ -99,18 +101,18 @@ public class SetupController implements Initializable {
     private String weiter() {
 
         String status = "Success";
-        String artikelnummer = set_tf_artikel.getText();
-        String auftragsnummer = set_tf_auftrag.getText();
-        if(artikelnummer.isEmpty() || auftragsnummer.isEmpty()) {
+        String artikelnummer = cabinet_choose.getValue().toString();
+       
+        if(artikelnummer.isEmpty() ) {
             setLblError(Color.TOMATO, "Empty credentials");
             status = "Error";
         } else {
             //query
-            String sql = "SELECT * FROM Cabinet Where ID= 0 and Artikelnummer = ? and Auftragsnummer= ?";
+            String sql = "SELECT * FROM Cabinet Where ID= 0 and Artikelnummer = ? ";
             try {
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
                 preparedStatement.setString(1,artikelnummer );
-                preparedStatement.setString(2,auftragsnummer);
+                
                 resultSet = (ResultSet) preparedStatement.executeQuery();
                 if (!resultSet.next()) {
                     setLblError(Color.TOMATO, "Enter Correct artikelnummer/auftragsnummer");
@@ -133,7 +135,15 @@ private void setLblError(Color color, String text) {
         System.out.println(text);
     }
   
-
+    private void loadData(){
+     CabinetList.removeAll(CabinetList);
+     String first = "1. Cabinet";
+  
+     
+     CabinetList.addAll(first);
+     cabinet_choose.getItems().addAll(CabinetList);
+    }
+    
   
     
   

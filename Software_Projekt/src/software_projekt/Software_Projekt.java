@@ -48,15 +48,17 @@ public class Software_Projekt extends Application {
         ResultSet resultSet;
         PreparedStatement preparedStatement;
         public static BufferedReader fromServer;
-        
-
-         private static float actCabinetTemp = Float.MIN_VALUE;
+        public static float Target=0;
+        static String TargetTemp;
+         private static float actualTemp = Float.MIN_VALUE;
            static boolean targetTempSet = false;
         private static  boolean targetTempReached = false;
         private static  boolean first =true;
-        static float firstTargetTemp = 70.5f;
+        static float firstTargetTemp = 0f;
         static float secondTargetTemp = -25.8f;
         public static String answer;
+        public static boolean TempControl = false;
+        public static String opertemp;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/software_projekt/fxml/FXMLDocument.fxml"));
@@ -145,71 +147,55 @@ public class Software_Projekt extends Application {
                  fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
                  toServer= new PrintStream(socket.getOutputStream(), true);
           for(String message : messages) {
-              
-                    // System.out.println("=====>"+message);
-                     //toServer.println(message);
-                     
-                    //String answer = fromServer.readLine();
-                    //System.out.println("<<==="+answer);
-                    if(message.startsWith("PRETST")){
-                     System.out.println("=====>"+message);
-                     toServer.println(message);
-                      long start = System.currentTimeMillis();
-                    String answer = fromServer.readLine();
-                    long stop = System.currentTimeMillis();
-                    if(answer.contains("OK"))
-                        System.out.println("<<=="+answer + "answered in" + (stop-start)+"milliseconds");
-                    else
-                        System.out.println("<<==="+answer);
-                }else{
-                    System.out.println("=====>"+message);
+              System.out.println("=====>"+message);
                     toServer.println(message);
                      answer = fromServer.readLine();
                     System.out.println("<<==="+answer);
-                    if(answer!=null&&answer.startsWith("SETTARGET-RESP")){
-                        if(!targetTempSet){
-                            actCabinetTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
-                            targetTempSet = true;
-                        }else if(answer!=null&&answer.startsWith("STOPPING")){
-                        System.exit(0);
-                    } if(targetTempSet &&!targetTempReached){
-                        do{
-                            message= "OPERTEMP";
-                            Thread.sleep(100);//10000 olacak deneme amacli
-                            
-                            System.out.println("=====>"+message);
-                            toServer.println(message);
-                            answer=fromServer.readLine();
-                            System.out.println("<<==="+answer);
-                            float cabinTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
-                            float targetTemp = (first ? firstTargetTemp:secondTargetTemp);
-                            if(cabinTemp >=0){
-                                 if(cabinTemp >=(targetTemp-targetTemp*0.03)&&cabinTemp <= (targetTemp+targetTemp*0.03)){
+                    if(answer.startsWith("SETTARGET")){
+                        actualTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
+                        outerloop:
+                         for(int i =0;i<message.length();i++){
+                             if(message.charAt(i)=='|'){
+                                 for(int j=i+1;j<message.length();j++)
+                                     if(message.charAt(j)=='|'){
+                                        TargetTemp= message.substring(i+1,j);
+                                        System.out.println("Target Temperatur====" +TargetTemp);
+                                        Target = Float.parseFloat(TargetTemp);
+                                        break outerloop;
+                                     }
+                             }
+                         }
+                           while(!TempControl){
+                           opertemp= "OPERTEMP";
+                           Thread.sleep(1);
+                           toServer.println(opertemp);
+                           answer=fromServer.readLine();
+                           System.out.println("<<==="+answer);
+                           actualTemp = Float.parseFloat(answer.substring(answer.indexOf(":")+1));
+                               System.out.println(+actualTemp+"=actualtemp");
+                                
+                                if(actualTemp >=0){
+                                     if(actualTemp >=(Target-Target*0.1)&&actualTemp <= (Target+Target*0.1)){
                                  
-                                    targetTempReached = true;}
+                                            TempControl = true;}
                                 
                           
-                            }else{     
-                                if(cabinTemp <=(targetTemp-targetTemp*0.03)&&cabinTemp >= (targetTemp+targetTemp*0.03)){
-                                    targetTempReached = true;
-                                   
-                                }
+                                 }else{     
+                                     if(actualTemp <=(Target-Target*0.1)&&actualTemp >= (Target+Target*0.1)){
+                                            TempControl = true;
+                                    
+                                        }
+                                } 
+                        
                             }
-                       
-                        }while(!targetTempReached);
-                        
-                        
-                        
-                    }if(targetTempReached){
-                            System.out.println("T A R G E T      R E A C H E D");
-                            first=false;
-                            targetTempSet = false;
-                            targetTempReached = false;
-                        
-                        }
+                           
+                           TempControl = false;
+                           System.out.println("Target Temperature Reached");
+                     
+               
                     
                     }
-                }
+                
             }
 
           

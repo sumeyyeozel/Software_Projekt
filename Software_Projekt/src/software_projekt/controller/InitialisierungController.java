@@ -42,8 +42,8 @@ public class InitialisierungController implements Initializable {
 
     @FXML
     private void InitBegin(MouseEvent event) throws IOException {
-                
-                String message = "STRT|Kabinett 1|Nurdanseker|ADMIN|10|3";
+                  
+                  String message = "STRT|cabinet 1|Nurdanseker|ADMIN|10|3";
 		  System.out.println("===>> " + message);
                   Software_Projekt.toCabinet.println(message);
                   answer=Software_Projekt.fromCabinet.readLine();

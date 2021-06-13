@@ -49,10 +49,11 @@ public class FunktionsCheck1Controller  implements Initializable {
     String bauteil_id;
     Vector<String>messages = new Vector<String>();
      boolean first =true;
+            float beginnTargetTemp= 0.1f;
             float firstTargetTemp=70.5f;
             int firstTargetTime = 1;
             float secondTargetTemp= -25.8f;
-            int secondTargetTime = 8;
+            int secondTargetTime = 5;
     @FXML
     private Label funktionscheck_label;
     @Override
@@ -83,7 +84,7 @@ public class FunktionsCheck1Controller  implements Initializable {
             
             
             messages.add("ENDINIT");
-            messages.add("STRTPRE|25"); // |failurrate [%1]
+            messages.add("STRTPRE|10"); // |failurrate [%1]
             for(int i= 1;i<slot; i++){
                 messages.add("PRETST|"+i);
                 messages.add("PRETST|"+i);
@@ -91,9 +92,17 @@ public class FunktionsCheck1Controller  implements Initializable {
             }
             messages.add("ENDPRE");
             messages.add("STRTBURNIN");
+            
+          
             messages.add("OPERTEMP");
-            messages.add("SETTARGET|"+ firstTargetTemp+"|"+ firstTargetTime+"|3|10"); 
-            messages.add("STRTPING|25"); // |Failurerate[%]
+            
+            
+            
+            
+            
+            
+            messages.add("SETTARGET|"+ beginnTargetTemp+"|5|10|15");
+            messages.add("STRTPING|10"); // |Failurerate[%]
             for(int j = 0; j<3; j++){
                 for(int i =1;i< slot;i++){
                     messages.add("PING|"+i);
@@ -102,8 +111,13 @@ public class FunktionsCheck1Controller  implements Initializable {
                 }
             }
             messages.add("STOPPING");
-            messages.add("SETTARGET|" + secondTargetTemp+"|"+ secondTargetTime+"|3|10");  
-            messages.add("STRTPING|25"); // |Failurerate[%]
+            
+            
+            
+            
+            
+            messages.add("SETTARGET|"+ firstTargetTemp+"|"+ firstTargetTime+"|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
             for(int j = 0; j<5; j++){
                 for(int i =1;i< slot;i++){
                     messages.add("PING|"+i);
@@ -113,6 +127,121 @@ public class FunktionsCheck1Controller  implements Initializable {
             }
             messages.add("STOPPING");
             
+            
+            
+            
+            messages.add("SETTARGET|"+ firstTargetTemp+"|2|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            
+            
+             messages.add("SETTARGET|-25|2|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            messages.add("SETTARGET|-25|1|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            messages.add("SETTARGET|70|2|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            messages.add("SETTARGET|-25|1|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            
+            messages.add("SETTARGET|-25|1|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            messages.add("SETTARGET|-5|1|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
+            
+            
+            messages.add("SETTARGET|-5|2|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+           
+            messages.add("STOPPING");
+            
+            
+            
+            
+            messages.add("SETTARGET|20|2|10|15"); 
+            messages.add("STRTPING|10"); // |Failurerate[%]
+            for(int j = 0; j<5; j++){
+                for(int i =1;i< slot;i++){
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                    messages.add("PING|"+i);
+                }
+            }
+            messages.add("STOPPING");
             
             
             //messages.add("SETTARGET|20|30|3|5");
